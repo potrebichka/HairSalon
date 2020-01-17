@@ -32,7 +32,8 @@ dotnet test
 ``` 
 
 
-
+CREATE DATABASE nina_potrebich;
+USE nina_potrebich;
 CREATE TABLE `nina_potrebich`.`stylists` (
   `StylistId` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(255) NULL,
