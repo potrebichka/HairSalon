@@ -2,13 +2,23 @@
     Layout = "_Layout";
 }
 
-<h2>Enter the name of client you are looking for:</h2>
-<hr/>
-@using (Html.BeginForm())
-{
-    <label for="ClientName">Name:</label>
-    <input type="text" name="clientName" id="ClientName" />
-    <input type="submit" value="Search" class="btn btn-primary"/>
-}
-<hr/>
-<h4>@Html.ActionLink("Home", "Index", "Home")</h4>
+<div id="horizontalMenu">
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li> 
+    </ul>
+</div>
+
+<div class="container contentBox">
+    <h2>Enter the name of client you are looking for:</h2>
+    <hr/>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label for="ClientName">Name:</label>
+            <input type="text" name="clientName" id="ClientName" class="form-control"/>    
+        </div>
+        
+        <input type="submit" value="Search" class="btn btn-info"/>
+    }    
+</div>
+

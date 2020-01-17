@@ -2,16 +2,23 @@
     Layout = "_Layout";
 }
 
-<h1>Found Client:</h1>
+<div id="horizontalMenu">
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li> 
+        <li>@Html.ActionLink("Search client", "Search")</li>
+    </ul>
+</div>
 
-@if (Model == null)
-{
-    <h3>No clients have been found.</h3>
-}
-else
-{
-    <h3><li>@Html.ActionLink($"{Model.Name}", "Details", new {id = Model.ClientId} )</li></h3>
-}
+<div class="container contentBox">
+    <h2>Found Client:</h2>
 
-<h4>@Html.ActionLink("Search", "Search")</h4>
-<h4>@Html.ActionLink("Home", "Index", "Home")</h4>
+    @if (Model == null)
+    {
+        <h3>No clients have been found.</h3>
+    }
+    else
+    {
+        <h3><li>@Html.ActionLink($"{Model.Name}", "Details", new {id = Model.ClientId} )</li></h3>
+    }
+</div>
+

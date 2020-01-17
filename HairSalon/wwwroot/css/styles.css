@@ -7,3 +7,71 @@ div#footer {
     background:#333;
     padding:8px;
 }
+
+body{
+    background: url(http://salonfiftyfive.com/wp-content/uploads/our-team-background.png);
+    background-size: cover;
+    text-align: center;
+}
+
+#salon{
+    font-family: 'Pacifico', cursive;
+}
+
+.centerBox{
+    margin-top: 15%;
+}
+
+.centerBox h1 {
+    color: #ffe7ad;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.centerBox a {
+    color: #617be3;
+}
+
+.centerBox a:hover{
+    color: #4a69bb;
+}
+
+.contentBox
+{
+    margin-top: 30px;
+    color: #ffe7ad;
+}
+
+#horizontalMenu{
+    height: 45px;
+    background-color: #550a46;
+    font-family:"Segoe UI";
+    font-size:25px;
+    font-weight:bold;
+    color:#ffe7ad;
+}
+
+#horizontalMenu ul {
+    margin:0px; 
+    padding:0px;
+}
+
+#horizontalMenu ul li{
+    display:inline;
+    height: 30px;
+    *float: left;
+    list-style:none;
+    position:relative;
+    *border-right:2px solid #ffe7ad;
+    padding:15px;
+}
+#horizontalMenu li a {  
+    color:#ffe7ad; 
+    text-decoration:none;
+}
+#horizontalMenu li a:hover {
+    color:red;
+}    
+.multi-line{
+    height: 5em;
+}

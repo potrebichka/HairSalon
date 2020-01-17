@@ -4,13 +4,21 @@
 
 @model HairSalon.Models.Stylist
 
-<h2>Stylist Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
-<h3>@Html.ActionLink("View clients", "Index", "Clients", new {id = @Model.StylistId})</h3>
-<hr/>
-<h4>@Html.ActionLink("Edit stylist", "Edit", new {id = Model.StylistId} )</h4>
-<h4>@Html.ActionLink("Delete stylist", "Delete", new {id = Model.StylistId})</h4>
-@* <h4>@Html.ActionLink("Search for restaurants", "Search", new {id = Model.StylistId})</h4> *@
-<h4>@Html.ActionLink("Back to list", "Index")</h4>
+<div id="horizontalMenu">
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Show all stylists", "Index")</li>   
+        <li>@Html.ActionLink("Delete stylist", "Delete", new {id = Model.StylistId})</li>
+        <li>@Html.ActionLink("Edit stylist", "Edit", new {id = Model.StylistId} )</li>
+    </ul>
+</div>
+
+<div class="container contentBox">
+  <h2>Stylist Details</h2>
+  <hr/>
+  <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+  <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+  <h3>@Html.ActionLink("View clients", "Index", "Clients", new {id = @Model.StylistId})</h3>
+</div>
+
+

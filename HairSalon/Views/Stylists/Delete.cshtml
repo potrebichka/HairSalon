@@ -4,12 +4,22 @@
 
 @model HairSalon.Models.Stylist
 
-<h2>Are you sure you want to delete stylist @Model.Name?</h2>
-<hr/>
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-@using (Html.BeginForm())
-{
-    <input type="submit" value="Delete" class="btn btn-primary"/>
-}
-<hr/>
-<h4>@Html.ActionLink("Back to list", "Index")</h4>
+<div id="horizontalMenu">
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Show all stylists", "Index")</li>   
+        <li>@Html.ActionLink("Back to stylist", "Details", new {id = Model.StylistId})</li>
+    </ul>
+</div>
+
+<div class="container contentBox">
+    <h2>Are you sure you want to delete stylist: @Model.Name?</h2>
+    <hr/>
+    <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+    <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+    }
+
+</div>
