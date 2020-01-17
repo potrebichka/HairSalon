@@ -15,6 +15,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * .NET
+* MySqlServer
 
 ### Installing
 
@@ -22,16 +23,16 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 $ git clone url-of-this-repo
 ```
-2. Using console of your choice build and run program in Project directory:
+2. Start MySql server by using command:
 ```
-dotnet run
+mysql start
 ```
-3. For Unit testing run tests in Project.Tests repository:
+3. Access MySql by executing the command:
 ```
-dotnet test
-``` 
-
-
+mysql -uroot -pepicodus
+```
+4. Create required for project databases using MySql and next commands
+```
 CREATE DATABASE nina_potrebich;
 USE nina_potrebich;
 CREATE TABLE `nina_potrebich`.`stylists` (
@@ -46,25 +47,22 @@ CREATE TABLE `nina_potrebich`.`clients` (
   `Description` VARCHAR(255) NULL,
   `StylistId` INT NULL,
   PRIMARY KEY (`ClientId`));
-
-
-
-
+```
+5. Using console of your choice build and run program in Project directory:
+```
+dotnet run
+```
 
 ## Specifications:
-* As the salon owner, I need to be able to see a list of all stylists.
-* As the salon owner, I need to be able to select a stylist, see their details, and see a list of all clients that belong to that stylist.
-* As the salon owner, I need to add new stylists to our system when they are hired.
-* As the salon owner, I need to be able to add new clients to a specific stylist. I should not be able to add a client if no stylists have been added.
-
-If you complete all objectives with time to spare, consider adding the following features (make sure to add tests when necessary):
-
-* Include a form where employees may search for a stylist by name. Display a list of all results.
-* Include a form where employees may also search for a client by name. Display a list of all results.
+* As the salon owner, you is able to see a list of all stylists.
+* As the salon owner, you is able to select a stylist, see their details, and see a list of all clients that belong to that stylist.
+* As the salon owner, you is able to add new stylists to our system when they are hired.
+* As the salon owner, you is able to add new clients to a specific stylist. You are not be able to add a client if no stylists have been added.
+* As the salon owner, you are able search for a stylist by name and get a list of all results.
+* As the salon owner, you are able to search for a client by name and get a list of all results.
 * Add a feature for adding an appointment to a client.
-* Add a feature for adding an appointment to a stylist. Add a check to make sure the stylist does not have any conflicting appointments.
-* Add a feature for keeping track of how much each stylist was paid for each appointment.
-* Add styling to your page.
+<!-- * Add a feature for adding an appointment to a stylist. Add a check to make sure the stylist does not have any conflicting appointments.
+* Add a feature for keeping track of how much each stylist was paid for each appointment. -->
 
 ## Technologies Used
 
