@@ -37,16 +37,25 @@ CREATE DATABASE nina_potrebich;
 USE nina_potrebich;
 CREATE TABLE `nina_potrebich`.`stylists` (
   `StylistId` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(255) NULL,
+  `Name` VARCHAR(255) NOT NULL,
   `Description` VARCHAR(255) NULL,
   PRIMARY KEY (`StylistId`));
 
 CREATE TABLE `nina_potrebich`.`clients` (
   `ClientId` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(255) NULL,
+  `Name` VARCHAR(255) NOT NULL,
   `Description` VARCHAR(255) NULL,
-  `StylistId` INT NULL,
+  `StylistId` INT NOT NULL,
   PRIMARY KEY (`ClientId`));
+
+CREATE TABLE `nina_potrebich`.`appointments` (
+  `AppointmentId` INT NOT NULL AUTO_INCREMENT,
+  `ClientId` INT NOT NULL,
+  `StylistId` INT NOT NULL,
+  `Description` VARCHAR(255) NULL,
+  `Time` DATETIME NOT NULL,
+  PRIMARY KEY (`AppointmentId`));
+
 ```
 5. Using console of your choice build and run program in Project directory:
 ```
