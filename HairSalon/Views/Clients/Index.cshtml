@@ -17,6 +17,6 @@
     <h3><li>@Html.ActionLink($"{client.Name}", "Details", new {id = client.ClientId} )</li></h3>
 }
 
-<h4>@Html.ActionLink("Create a new client", "Create")</h4>
+<h4>@Html.ActionLink("Create a new client", "Create", new {id = ViewBag.Id})</h4>
 <h4>@Html.ActionLink("Back to stylist", "Details", "Stylists", new {id = ViewBag.Id})</h4>
 <h4>@Html.ActionLink("Home", "Index", "Home")</h4>
