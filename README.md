@@ -31,6 +31,25 @@ dotnet run
 dotnet test
 ``` 
 
+
+
+CREATE TABLE `nina_potrebich`.`stylists` (
+  `StylistId` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(255) NULL,
+  `Description` VARCHAR(255) NULL,
+  PRIMARY KEY (`StylistId`));
+
+CREATE TABLE `nina_potrebich`.`clients` (
+  `ClientId` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(255) NULL,
+  `Description` VARCHAR(255) NULL,
+  `StylistId` INT NULL,
+  PRIMARY KEY (`ClientId`));
+
+
+
+
+
 ## Specifications:
 * As the salon owner, I need to be able to see a list of all stylists.
 * As the salon owner, I need to be able to select a stylist, see their details, and see a list of all clients that belong to that stylist.
