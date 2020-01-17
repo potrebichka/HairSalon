@@ -1,0 +1,14 @@
+@{
+    Layout = "_Layout";
+}
+
+<h2>Enter the name of client you are looking for:</h2>
+<hr/>
+@using (Html.BeginForm())
+{
+    <label for="ClientName">Name:</label>
+    <input type="text" name="clientName" id="ClientName" />
+    <input type="submit" value="Search" class="btn btn-primary"/>
+}
+<hr/>
+<h4>@Html.ActionLink("Home", "Index", "Home")</h4>
