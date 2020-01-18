@@ -73,6 +73,9 @@ dotnet run
 <!-- * Add a feature for adding an appointment to a stylist. Add a check to make sure the stylist does not have any conflicting appointments.
 * Add a feature for keeping track of how much each stylist was paid for each appointment. -->
 
+## Bugs:
+Appoinment feature is not working yet.
+
 ## Technologies Used
 
 _C#, .NET, CSS, ASP.NET Core MVC, Entity Framework Core, HTML, Bootstrap_

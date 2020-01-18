@@ -15,7 +15,8 @@ namespace HairSalon.Controllers
         }
         public ActionResult Index(int id)
         {
-            List<Client> model = _db.Clients.Where(clients => clients.StylistId == id).ToList();
+            // List<Client> model = _db.Clients.Where(clients => clients.StylistId == id).ToList();
+            List<Client> model = _db.Clients.Include(client => client.Stylist).Where(clients => clients.StylistId == id).ToList();
             Stylist currentStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
             ViewBag.Name = currentStylist.Name;
             ViewBag.Id = currentStylist.StylistId;
@@ -30,6 +31,7 @@ namespace HairSalon.Controllers
         [HttpPost]
         public ActionResult Create(Client client)
         {
+            client.Stylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == client.StylistId);
             _db.Clients.Add(client);
             _db.SaveChanges();
             return RedirectToAction("Index", new {id = client.StylistId});
