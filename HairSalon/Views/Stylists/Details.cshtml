@@ -10,6 +10,7 @@
         <li>@Html.ActionLink("Show all stylists", "Index")</li>   
         <li>@Html.ActionLink("Delete stylist", "Delete", new {id = Model.StylistId})</li>
         <li>@Html.ActionLink("Edit stylist", "Edit", new {id = Model.StylistId} )</li>
+         <li>@Html.ActionLink("Appointments", "Index", "Appointments", new {id = Model.StylistId} )</li>
         <li>@Html.ActionLink("Add an appointment", "Create", "Appointments", new {id = Model.StylistId} )</li>
     </ul>
 </div>

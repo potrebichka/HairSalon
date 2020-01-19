@@ -14,6 +14,13 @@ namespace HairSalon.Controllers
         {
             _db = db;
         }
+        public ActionResult Index(int id)
+        {
+            Stylist currentStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+            List<Appointment> appointments = _db.Appointments.Where(app => app.StylistId == id).Include(app => app.Stylist).Include(app => app.Client).ToList();
+            ViewBag.Stylist = currentStylist;
+            return View(appointments);
+        }
         public ActionResult Create(int id)
         {
             Stylist currentStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
