@@ -1,0 +1,29 @@
+@{
+    Layout = "_Layout";
+}
+
+@model HairSalon.Models.Appointment
+
+<div id="horizontalMenu">
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Show all stylists", "Index")</li>   
+        <li>@Html.ActionLink("Back to stylist", "Details", new {id = Model.StylistId})</li>
+        <li>@Html.ActionLink("Back to appointments", "Index", new {id = Model.StylistId}))</li>
+        <li>@Html.ActionLink("Back to appointment", "Details", new {id = Model.AppointmentId}))</li>
+    </ul>
+</div>
+
+<div class="container contentBox">
+    <h2>Are you sure you want to delete appointment:?</h2>
+    <hr/>
+    <h3>@Html.DisplayNameFor(model => model.Stylist): @Html.DisplayFor(model => model.Stylist.Name)</h3>
+    <h3>@Html.DisplayNameFor(model => model.Client): @Html.DisplayFor(model => model.Client.Name)</h3>
+    <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+    <h3>@Html.DisplayNameFor(model => model.Time): @Html.DisplayFor(model => model.Time)</h3>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+    }
+
+</div>

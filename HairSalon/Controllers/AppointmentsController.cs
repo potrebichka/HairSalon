@@ -36,5 +36,39 @@ namespace HairSalon.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index", new {id = appointment.StylistId});
         }
+        public ActionResult Details(int id)
+        {
+            Appointment thisAppointment = _db.Appointments.Include(app => app.Stylist).Include(app => app.Client).FirstOrDefault(app => app.AppointmentId == id);
+            return View(thisAppointment);
+        }
+        public ActionResult Edit (int id)
+        {
+            Appointment thisAppointment = _db.Appointments.FirstOrDefault(app => app.AppointmentId == id);
+            List<Stylist> stylists = _db.Stylists.ToList();
+            List<Client> clients = _db.Clients.ToList();
+            ViewBag.StylistId = new SelectList(stylists, "StylistId", "Name");
+            ViewBag.ClientId = new SelectList(clients, "ClientId", "Name");
+            return View(thisAppointment);
+        }
+        [HttpPost]
+        public ActionResult Edit (Appointment appointment)
+        {
+             _db.Entry(appointment).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Details", new {id = appointment.AppointmentId});
+        }
+        public ActionResult Delete(int id)
+        {
+             Appointment thisAppointment = _db.Appointments.Include(app => app.Stylist).Include(app => app.Client).FirstOrDefault(app => app.AppointmentId == id);
+            return View(thisAppointment);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Appointment thisAppointment = _db.Appointments.FirstOrDefault(app => app.AppointmentId == id);
+            _db.Appointments.Remove(thisAppointment);
+            _db.SaveChanges();
+            return RedirectToAction("Index", new {id = thisAppointment.StylistId});
+        }
     }
 }
