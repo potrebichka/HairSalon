@@ -3,6 +3,7 @@ using HairSalon.Models;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HairSalon.Controllers
@@ -27,11 +28,32 @@ namespace HairSalon.Controllers
             List<Client> clients = _db.Clients.Where(client => client.StylistId == id).ToList();
             ViewBag.ClientId = new SelectList(clients, "ClientId", "Name");
             ViewBag.Stylist = currentStylist;
+            ViewBag.Failed = false;
             return View();
         }
         [HttpPost]
         public ActionResult Create(Appointment appointment)
         {
+            List<Appointment> appointments = _db.Appointments.Where(app => app.StylistId == appointment.StylistId).ToList();
+            bool flag = false;
+            for(int i = 1; i < appointments.Count; i++)
+            {
+                if ((appointment.Time.Add(new TimeSpan(-1,0,0)) <= appointments[i].Time) && (appointment.Time.Add(new TimeSpan(1,0,0)) > appointments[i].Time))
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            ViewBag.Failed = false;
+            if (flag)
+            {
+                ViewBag.Failed = true;
+                Stylist currentStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == appointment.StylistId);
+                List<Client> clients = _db.Clients.Where(client => client.StylistId == appointment.StylistId).ToList();
+                ViewBag.ClientId = new SelectList(clients, "ClientId", "Name");
+                ViewBag.Stylist = currentStylist;
+                return View("Create");
+            }
             _db.Appointments.Add(appointment);
             _db.SaveChanges();
             return RedirectToAction("Index", new {id = appointment.StylistId});

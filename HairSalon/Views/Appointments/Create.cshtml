@@ -14,6 +14,11 @@
 </div>
 
 <div class="container contentBox">
+    @if(ViewBag.Failed)
+    {
+        <h3>There is a time conflict for this stylist. Try to choose another time.</h3>
+        <hr/>
+    }
     <h2>Add a new appointment for @ViewBag.Stylist.Name</h2>
     <hr/>
 

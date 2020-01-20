@@ -69,12 +69,7 @@ dotnet run
 * As the salon owner, you is able to add new clients to a specific stylist. You are not be able to add a client if no stylists have been added.
 * As the salon owner, you are able search for a stylist by name and get a list of all results.
 * As the salon owner, you are able to search for a client by name and get a list of all results.
-* Add a feature for adding an appointment to a client.
-<!-- * Add a feature for adding an appointment to a stylist. Add a check to make sure the stylist does not have any conflicting appointments.
-* Add a feature for keeping track of how much each stylist was paid for each appointment. -->
-
-## Bugs:
-Appoinment feature is not working yet.
+* User can add an appointment to a stylist. There is also a check to make sure the stylist does not have any conflicting appointments.
 
 ## Technologies Used
 
