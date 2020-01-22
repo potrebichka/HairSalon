@@ -9,12 +9,21 @@
         <li>@Html.ActionLink("Home", "Index", "Home")</li>
         <li>@Html.ActionLink("Show all stylists","Index", "Stylists")</li>   
         <li>@Html.ActionLink("Back to stylist", "Details", "Stylists", new {id = Model.StylistId})</li>
-        <li>@Html.ActionLink("Back to appointments", "Index", new {id = Model.StylistId}))</li>
-        <li>@Html.ActionLink("Back to appointment", "Details", new {id = Model.AppointmentId}))</li>
+        <li>@Html.ActionLink("Back to appointments", "Index", new {id = Model.StylistId})</li>
+        <li>@Html.ActionLink("Back to appointment", "Details", new {id = Model.AppointmentId})</li>
     </ul>
 </div>
 
 <div class="container contentBox">
+
+    @if(ViewBag.Failed)
+    {
+        <h3>There is a time conflict for this stylist. Try to choose another time.</h3>
+        <hr/>
+    }
+    <h2>Add a new appointment for @Model.Stylist.Name</h2>
+    <hr/>
+
     <h2>Edit appointment</h2>
     <hr/>
 

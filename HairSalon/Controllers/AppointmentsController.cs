@@ -70,14 +70,44 @@ namespace HairSalon.Controllers
             List<Client> clients = _db.Clients.ToList();
             ViewBag.StylistId = new SelectList(stylists, "StylistId", "Name");
             ViewBag.ClientId = new SelectList(clients, "ClientId", "Name");
+            ViewBag.Failed = false;
             return View(thisAppointment);
         }
         [HttpPost]
         public ActionResult Edit (Appointment appointment)
         {
-             _db.Entry(appointment).State = EntityState.Modified;
-            _db.SaveChanges();
-            return RedirectToAction("Details", new {id = appointment.AppointmentId});
+            List<Appointment> appointments = _db.Appointments.Where(app => app.StylistId == appointment.StylistId).ToList();
+            bool flag = false;
+            for(int i = 1; i < appointments.Count; i++)
+            {
+                if ((appointment.AppointmentId != appointments[i].AppointmentId) && (appointment.Time.Add(new TimeSpan(-1,0,0)) <= appointments[i].Time) && (appointment.Time.Add(new TimeSpan(1,0,0)) > appointments[i].Time))
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            ViewBag.Failed = false;
+            if (flag)
+            {
+                ViewBag.Failed = true;
+                Appointment thisAppointment = _db.Appointments.FirstOrDefault(app => app.AppointmentId == appointment.AppointmentId);
+                List<Stylist> stylists = _db.Stylists.ToList();
+                List<Client> clients = _db.Clients.ToList();
+                ViewBag.StylistId = new SelectList(stylists, "StylistId", "Name");
+                ViewBag.ClientId = new SelectList(clients, "ClientId", "Name");
+                return View("Edit", thisAppointment);
+            }
+            else
+            {
+                var local = _db.Appointments
+                    .Local
+                    .FirstOrDefault(app => app.AppointmentId.Equals(appointment.AppointmentId));
+                _db.Entry(local).State = EntityState.Detached;
+                _db.Entry(appointment).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Details", new {id = appointment.AppointmentId});
+            }
+
         }
         public ActionResult Delete(int id)
         {
